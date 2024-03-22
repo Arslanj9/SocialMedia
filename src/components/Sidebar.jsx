@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { IoMdHome, IoMdCreate } from "react-icons/io";
+import {postsStoreContext} from '../store/posts_store'
 
-const Sidebar = ({ selectedTab, setSelectedTab }) => {
+const Sidebar = () => {
+
+  const { selectedTab, setSelectedTab } = useContext(postsStoreContext)
+
   return (
     <>
       <div

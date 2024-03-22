@@ -1,11 +1,16 @@
+import { useContext } from 'react'
 import Post from '../components/Post'
+import {postsStoreContext} from '../store/posts_store'
 
 const Posts = () => {
+
+  const {selectedTab} = useContext(postsStoreContext)
+
   return (
     <div className='d-flex'>
-        <Post />
-        <Post />
-        <Post />
+        { selectedTab === "HOME" &&  <Post />}
+        { selectedTab === "HOME" &&  <Post />}
+        { selectedTab === "HOME" &&  <Post />}
     </div>
   )
 }
