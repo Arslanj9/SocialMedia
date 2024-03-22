@@ -1,4 +1,6 @@
-const Sidebar = () => {
+import { IoMdHome, IoMdCreate } from "react-icons/io";
+
+const Sidebar = ({ selectedTab, setSelectedTab }) => {
   return (
     <>
       <div
@@ -16,19 +18,21 @@ const Sidebar = () => {
         </a>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
-          <li className="nav-item">
-            <a href="#" className="nav-link text-white" aria-current="page">
-              <svg className="bi pe-none me-2" width="16" height="16">
+          <li className="nav-item" onClick={() => {setSelectedTab("HOME")}}>
+            <a href="#" className={`nav-link text-white ${selectedTab === "HOME" && "active"}`} aria-current="page" >
+              {/* <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
-              </svg>
+              </svg> */}
+              <IoMdHome className="me-2 mb-1"/>
               Home
             </a>
           </li>
-          <li>
-            <a href="#" className="nav-link active">
-              <svg className="bi pe-none me-2" width="16" height="16">
+          <li className="nav-item" onClick={() => {setSelectedTab("CREATE_POST")}}>
+            <a href="#" className={`nav-link text-white ${selectedTab === "CREATE_POST" && "active"}`}>
+              {/* <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#speedometer2"></use>
-              </svg>
+              </svg> */}
+              <IoMdCreate className="me-2 mb-1"/>
               Create Post
             </a>
           </li>
