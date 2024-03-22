@@ -1,37 +1,44 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { postsStoreContext } from "../store/posts_store";
 
 const CreatePost = () => {
-  const {selectedTab} = useContext(postsStoreContext);
+  const {selectedTab, addPost} = useContext(postsStoreContext);
 
+  const heading = useRef()
+  const text = useRef()
+
+  const handleSubmit = () => {
+    addPost(heading.current.value, text.current.value)
+  }
+
+ 
   return (
     <>
       {selectedTab === "CREATE_POST" && (
-        <form>
+        <form className="w-25 m-5">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+            <label htmlFor="exampleInputEmail1">Heading</label>
             <input
-              type="email"
+              type="text"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Enter email"
+              placeholder="Heading"
+              ref={heading}
             />
-            <small id="emailHelp" className="form-text text-muted">
-              We'll never share your email with anyone else.
-            </small>
           </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
+          <div className="form-group mt-2">
+            <label htmlFor="exampleInputPassword1">Text</label>
             <input
-              type="password"
+              type="text"
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Password"
+              placeholder="Text"
+              ref={text}
             />
           </div>
-          <div className="form-check">
+          {/* <div className="form-check">
             <input
               type="checkbox"
               className="form-check-input"
@@ -40,8 +47,8 @@ const CreatePost = () => {
             <label className="form-check-label" htmlFor="exampleCheck1">
               Check me out
             </label>
-          </div>
-          <button type="submit" className="btn btn-primary">
+          </div> */}
+          <button type="submit" className="btn btn-primary mt-3 w-50" onClick={() => handleSubmit()}>
             Submit
           </button>
         </form>

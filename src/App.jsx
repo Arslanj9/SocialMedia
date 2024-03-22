@@ -14,7 +14,6 @@ function App() {
       <Sidebar />
       <div className='content'>
         <Header />
-          {/* { selectedTab === "HOME" ? <Posts /> : <CreatePost /> } */}
           <Posts />
           <CreatePost />
         <Footer />
