@@ -5,11 +5,13 @@ import { postsStoreContext } from "../store/posts_store";
 const CreatePost = () => {
   const {selectedTab, addPost} = useContext(postsStoreContext);
 
-  const heading = useRef()
-  const text = useRef()
+  let heading = useRef()
+  let text = useRef()
 
   const handleSubmit = () => {
-    addPost(heading.current.value, text.current.value)
+    addPost(heading.current.value, text.current.value);
+    heading.current.value = "";
+    text.current.value = "";
   }
 
  

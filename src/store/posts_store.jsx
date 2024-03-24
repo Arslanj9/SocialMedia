@@ -6,7 +6,6 @@ export const postsStoreContext = createContext({
     deletePost: () => {}
 })
 
-
 const innitialPosts = [
     {
         heading: "Bye",
@@ -38,13 +37,13 @@ const PostsProvider = ({ children }) => {
                 text: text
             }
         }
-        console.log(heading)
-        console.log(text)
+        // console.log(heading)
+        // console.log(text)
         
         dispatchPosts(newPost)
     }
 
-    console.log(posts)
+    // console.log(posts[0].heading)
 
     const deletePost = () => {
 
