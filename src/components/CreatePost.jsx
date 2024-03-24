@@ -20,23 +20,23 @@ const CreatePost = () => {
       {selectedTab === "CREATE_POST" && (
         <form className="w-25 m-5">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Heading</label>
+            <label htmlFor="exampleInputEmail1">Title</label>
             <input
               type="text"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
-              placeholder="Heading"
+              placeholder="Title"
               ref={heading}
             />
           </div>
           <div className="form-group mt-2">
-            <label htmlFor="exampleInputPassword1">Text</label>
+            <label htmlFor="exampleInputPassword1">Body</label>
             <input
               type="text"
               className="form-control"
               id="exampleInputPassword1"
-              placeholder="Text"
+              placeholder="Body"
               ref={text}
             />
           </div>

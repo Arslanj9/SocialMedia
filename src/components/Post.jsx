@@ -1,15 +1,13 @@
-const Post = ({postHeading, postText}) => {
+const Post = ({ post }) => {
   return (
     <>
       <div className="card ms-4 mt-4" style={{width: "18rem"}}>
         <div className="card-body">
-          <h5 className="card-title">{postHeading}</h5>
+          <h5 className="card-title">{post.title}</h5>
           <p className="card-text">
-            {postText}
+            {post.body}
           </p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
+          { post.tags.map((tag) => <span class="badge text-bg-primary me-2">{tag}</span>) }
         </div>
       </div>
     </>

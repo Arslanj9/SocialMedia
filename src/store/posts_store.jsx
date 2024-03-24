@@ -1,15 +1,39 @@
 import { createContext, useReducer, useState } from "react";
 
-export const postsStoreContext = createContext({
-    posts: [],
-    addPost: () => {},
-    deletePost: () => {}
-})
+export const postsStoreContext = createContext()
 
 const innitialPosts = [
     {
-        heading: "Bye",
-        text: "Hello i am text"
+        id: "1",
+        title: "Going on a ride",
+        body: "It so cool to finally go for a ride with friends",
+        reactions: 4,
+        userId: "",
+        tags: ["Enjoy", "Outdoor", "Awesome"]
+    },
+    {
+        id: "2",
+        title: "Going on a ride",
+        body: "It so cool to finally go for a ride with friends",
+        reactions: 20,
+        userId: "",
+        tags: ["Enjoy", "Outdoor"]
+    },
+    {
+        id: "1",
+        title: "Going on a ride",
+        body: "It so cool to finally go for a ride with friends",
+        reactions: 4,
+        userId: "",
+        tags: ["Enjoy", "Outdoor", "Awesome"]
+    },
+    {
+        id: "2",
+        title: "Going on a ride",
+        body: "It so cool to finally go for a ride with friends",
+        reactions: 20,
+        userId: "",
+        tags: ["Enjoy", "Outdoor"]
     }
 ]
 
@@ -37,13 +61,10 @@ const PostsProvider = ({ children }) => {
                 text: text
             }
         }
-        // console.log(heading)
-        // console.log(text)
         
         dispatchPosts(newPost)
     }
 
-    // console.log(posts[0].heading)
 
     const deletePost = () => {
 
