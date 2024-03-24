@@ -18,9 +18,9 @@ const CreatePost = () => {
   return (
     <>
       {selectedTab === "CREATE_POST" && (
-        <form className="w-25 m-5">
+        <form className="w-50 m-5">
           <div className="form-group">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title"><strong>Title</strong></label>
             <input
               type="text"
               className="form-control"
@@ -30,7 +30,7 @@ const CreatePost = () => {
             />
           </div>
           <div className="form-group mt-2">
-            <label htmlFor="body">Content</label>
+            <label htmlFor="body"><strong>Content</strong></label>
             <textarea
               type="text"
               className="form-control"
@@ -39,8 +39,17 @@ const CreatePost = () => {
               ref={text}
             />
           </div>
-          <button type="submit" className="btn btn-primary mt-3 w-50" onClick={() => handleSubmit()}>
-            Submit
+          <div className="form-group mt-2">
+            <label htmlFor="body"><strong>Tags</strong></label>
+            <input
+              type="tags"
+              className="form-control"
+              id="tags"
+              placeholder="Please provide comma separated values"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary mt-3 w-25" onClick={() => handleSubmit()}>
+            Post
           </button>
         </form>
       )}
