@@ -25,7 +25,7 @@ const Post = ({ post }) => {
           className="position-absolute cursor-pointer pe-auto top-0 start-100 translate-middle badge rounded-pill bg-danger"
           onClick={() => handleDeletePost(post.id)}
         >
-        <ImCross style={{fontSize: "13px"}}/>
+          <ImCross style={{fontSize: "13px"}}/>
         </span>
       </div>
     </>

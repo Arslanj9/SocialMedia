@@ -5,7 +5,6 @@ import { postsStoreContext } from "../store/posts_store";
 const Posts = () => {
   const { selectedTab, posts } = useContext(postsStoreContext);
 
-  // console.log(posts)
 
   return (
     <>

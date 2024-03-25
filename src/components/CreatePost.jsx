@@ -3,13 +3,14 @@ import { useContext, useRef } from "react";
 import { postsStoreContext } from "../store/posts_store";
 
 const CreatePost = () => {
-  const {selectedTab, handleAddPost} = useContext(postsStoreContext);
+  const {selectedTab, handleAddPost, handleIncrementID} = useContext(postsStoreContext);
 
   let heading = useRef()
   let text = useRef()
 
   const handleSubmit = () => {
     handleAddPost(heading.current.value, text.current.value);
+    handleIncrementID();
     heading.current.value = "";
     text.current.value = "";
   }
