@@ -3,16 +3,19 @@ import { useContext, useRef } from "react";
 import { postsStoreContext } from "../store/posts_store";
 
 const CreatePost = () => {
-  const {selectedTab, handleAddPost, handleIncrementID} = useContext(postsStoreContext);
+  const {selectedTab, handleAddPost} = useContext(postsStoreContext);
 
-  let heading = useRef()
-  let text = useRef()
+  let title = useRef()
+  let body = useRef()
+  let tags = useRef()
 
   const handleSubmit = () => {
-    handleAddPost(heading.current.value, text.current.value);
-    handleIncrementID();
-    heading.current.value = "";
-    text.current.value = "";
+    const tagsArray = tags.current.value.split(',').map(tag => tag.trim());
+    console.log(tagsArray)
+    handleAddPost(title.current.value, body.current.value, tagsArray);
+    title.current.value = "";
+    body.current.value = "";
+    tags.current.value = "";
   }
 
  
@@ -27,17 +30,17 @@ const CreatePost = () => {
               className="form-control"
               id="title"
               placeholder="Title"
-              ref={heading}
+              ref={title}
             />
           </div>
           <div className="form-group mt-2">
-            <label htmlFor="body"><strong>Content</strong></label>
+            <label htmlFor="body"><strong>Body</strong></label>
             <textarea
               type="text"
               className="form-control"
               id="body"
               placeholder="Content"
-              ref={text}
+              ref={body}
             />
           </div>
           <div className="form-group mt-2">
@@ -47,6 +50,7 @@ const CreatePost = () => {
               className="form-control"
               id="tags"
               placeholder="Please provide comma separated values"
+              ref={tags}
             />
           </div>
           <button type="submit" className="btn btn-primary mt-3 w-25" onClick={() => handleSubmit()}>

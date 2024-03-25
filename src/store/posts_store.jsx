@@ -8,33 +8,32 @@ export const postsStoreContext = createContext({
     selectedTab: "",
     setSelectedTab: () => {},
     handleAddPost: () => {}, 
-    handleDeletePost: () => {},
-    handleIncrementID: () => {}
+    handleDeletePost: () => {}
 })
 
 
 
 const innitialPosts = [
     {
-        id: "1",
+        id: 1,
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
         tags: ["Enjoy", "Outdoor", "Awesome"]
     },
     {
-        id: "2",
+        id: 2,
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
         tags: ["Enjoy", "Outdoor"]
     },
     {
-        id: "3",
+        id: 3,
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
         tags: ["Enjoy", "Outdoor", "Awesome"]
     },
     {
-        id: "4",
+        id: 4,
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
         tags: ["Enjoy", "Outdoor"]
@@ -45,7 +44,12 @@ const innitialPosts = [
 const postsReducer = (posts, action) => {
     let newPosts = posts;
     if(action.type === "ADD_POST") {
-        newPosts = [...posts, {heading: action.payload.heading, text: action.payload.text} ] 
+        newPosts = [...posts, {
+            id: posts.length > 0 ? posts[posts.length - 1].id + 1 : 1,
+            title: action.payload.title,
+            body: action.payload.body,
+            tags: action.payload.tags
+        }]
     }else if(action.type === "DEL_POST") {
         newPosts = posts.filter((post) => post.id !== action.payload.postId);
     }else if(action.type === "INCREMENT_ID") {
@@ -53,6 +57,7 @@ const postsReducer = (posts, action) => {
         newPosts = [ ...posts, {id: maxId + 1} ];
     }
 
+    console.log(newPosts)
     return newPosts
 }
 
@@ -63,14 +68,17 @@ const PostsProvider = ({ children }) => {
     const [ posts, dispatchPosts ] = useReducer(postsReducer, innitialPosts)
     const [ selectedTab, setSelectedTab ] = useState("HOME")
 
-    const handleAddPost = (heading, text) => {
+    const handleAddPost = (title, body, tags) => {
         const newPost = {
             type: "ADD_POST",
             payload: {
-                heading: heading,
-                text: text
+                title,
+                body,
+                tags
             }
         }
+
+        console.log(`${newPost.payload.tags}`)
         
         dispatchPosts(newPost)
     }
@@ -87,15 +95,6 @@ const PostsProvider = ({ children }) => {
         dispatchPosts(deletePost)
     }
 
-    const handleIncrementID = () => {
-        const incrementId = {
-            type: "INCREMENT_ID",
-        }
-        console.log("Increment called")
-
-        dispatchPosts(incrementId)
-    }
-
 
 
     return (
@@ -105,8 +104,7 @@ const PostsProvider = ({ children }) => {
                 setSelectedTab, 
                 posts, 
                 handleAddPost, 
-                handleDeletePost,
-                handleIncrementID 
+                handleDeletePost
         }}>
             {children}
         </postsStoreContext.Provider>
