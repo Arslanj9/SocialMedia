@@ -1,30 +1,31 @@
 import { createContext, useReducer, useState } from "react";
 
-export const postsStoreContext = createContext()
+// By providing values and methods inside createContext method you can get auto-generated values inside components where you are using them!
+export const postsStoreContext = createContext({
+    posts: [],
+    selectedTab: "",
+    setSelectedTab: () => {},
+    handleAddPost: () => {}, 
+    handleDeletePost: () => {}
+})
 
 const innitialPosts = [
     {
         id: "1",
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
-        reactions: 4,
-        userId: "",
         tags: ["Enjoy", "Outdoor", "Awesome"]
     },
     {
         id: "2",
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
-        reactions: 20,
-        userId: "",
         tags: ["Enjoy", "Outdoor"]
     },
     {
         id: "3",
         title: "Going on a ride",
         body: "It so cool to finally go for a ride with friends",
-        reactions: 4,
-        userId: "",
         tags: ["Enjoy", "Outdoor", "Awesome"]
     },
     {
